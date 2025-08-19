@@ -12,10 +12,14 @@ import {
   Brain,
   Eye,
   Volume2,
-  Settings
+  Settings,
+  Play,
+  ArrowRight
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Interview = () => {
+  const navigate = useNavigate();
   const [isVideoOn, setIsVideoOn] = useState(true);
   const [isMicOn, setIsMicOn] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -63,6 +67,19 @@ const Interview = () => {
             <p className="text-muted-foreground">
               Practice with our AI interviewer and get real-time feedback on your performance
             </p>
+            
+            {/* Start Interview Button */}
+            <div className="mt-6">
+              <Button 
+                size="lg" 
+                onClick={() => navigate('/interview-page')}
+                className="bg-gradient-primary hover:bg-gradient-primary/90 text-white px-8 py-3"
+              >
+                <Play className="w-5 h-5 mr-2" />
+                Start AI Interview
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">

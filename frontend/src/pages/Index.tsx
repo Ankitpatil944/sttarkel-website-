@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Link } from "react-router-dom";
+import IconLayer from '../components/IconLayer'; // example corrected path
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
+import './OutlinedText.css';
 import { 
   Brain, 
   Target, 
@@ -26,10 +29,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: Brain,
@@ -83,62 +86,165 @@ const Index = () => {
     },
   ];
 
-  const faqs = [
-    {
-      q: "Do I need prior experience to start?",
-      a: "No. The platform adapts to your level and guides you from basics to advanced topics.",
-    },
-    {
-      q: "Can I retake assessments?",
-      a: "Yes. You can retake assessments and track improvement across attempts.",
-    },
-    {
-      q: "How does the AI interview work?",
-      a: "You answer realistic questions on camera/mic. We analyze content, clarity, and confidence to give actionable feedback.",
-    },
-    {
-      q: "Is my data secure?",
-      a: "We use encrypted storage and strict access controls. You can delete your data anytime from settings.",
-    },
-  ];
+  
 
-  return (
-    <div className="min-h-screen bg-gradient-bg">
-      
+return (
+  <div className="min-h-screen bg-gradient-bg">
+    <div
+      className="min-h-screen max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 
+                  m-4 sm:m-6 lg:m-10 bg-gradient-bg border border-blue-300 rounded-3xl overflow-hidden bg-gradient-to-b from-slate-100 to-cyan-50
+                  animate-fade-in mt-20"
+      style={{ marginTop: '5rem' }}
+    >
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20">
-        {/* Removed background image and overlay */}
-        
+      <section className="relative pt-20 mt-10 pb-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center space-x-2 bg-card/50 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-primary/20 animate-fade-in">
               <Sparkles className="h-4 w-4 text-primary animate-pulse" />
               <span className="text-sm font-medium">Professional Assessment Platform</span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in">
-              Build Your
-              <span className="bg-gradient-primary bg-clip-text text-transparent block animate-scale-in">
-                Future Today
-              </span>
+
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal mb-6 leading-tight animate-fade-in text-[#2D3253]">
+              Build the Skills that <br />
+              power your{' '}
+              <img
+                src="/Images/Icons/794uUwps6bKmtOv9ahBBfUiCY.webp"
+                alt="Career Icon"
+                className="inline-block mx-2 align-middle border border-gray-200 border-opacity-60 rounded-xl rotate-[10deg] w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20"
+              />{' '}
+              Career
             </h1>
-            
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in">
-              Take the next step in your career with our comprehensive assessment and preparation platform. 
-              Designed to help you succeed in your professional goals.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-              <Link to="/difficulty">
-                <Button variant="default" size="lg" className="group hover-scale">
-                  Start Assessment
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Button variant="outline" size="lg" className="hover-scale">
-                Learn More
-              </Button>
+
+            <div className="pointer-events-none">
+              <img
+                src="/Images/Icons/upicon.png"
+                alt="Career Icon"
+                width={60}
+                height={60}
+                className="inline-block mt-2 mx-2 align-middle border-gray-200 border-opacity-60 rounded-xl absolute left-[8%] top-[2%] opacity-100 pointer-events-none"
+                style={{ verticalAlign: 'middle', rotate: '-20deg' }}
+              />
             </div>
+
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in">
+              Take the next step in your career with Sttarkel
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in relative z-50">
+              <div 
+                className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors cursor-pointer hover-scale"
+                onClick={() => {
+                  console.log('Start Assessment clicked');
+                  navigate('/services/ai-assessment');
+                }}
+              >
+                Start Assessment
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </div>
+              <div 
+                className="inline-flex items-center justify-center px-8 py-3 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-lg font-medium transition-colors cursor-pointer hover-scale"
+                onClick={() => {
+                  console.log('Learn More clicked');
+                  navigate('/about');
+                }}
+              >
+                Learn More
+              </div>
+            </div>
+
+            {/* IconLayer moved to prevent interference with buttons */}
+            <div className="relative z-0">
+              <IconLayer />
+            </div>
+
+            {/* <img
+              src="/Images/Sttarkel_Student.png"
+              alt="Career Icon"
+              width={600}
+              height={600}
+              className="inline-block mt-2 mx-2 align-middle border-gray-200 border-opacity-60 rounded-xl left-1/6 top-1/2 opacity-100"
+              style={{ verticalAlign: 'middle', offset: '50%', transform: 'translateY(-118%)' }}
+            /> */}
+            {/* <img
+              src="/Images/Sttarkel_Student.png"
+              alt="Career Icon"
+              width={600}
+              height={600}
+              className="inline-block mt-2 mx-2 align-middle border-gray-200 border-opacity-60 rounded-xl left-1/6 top-1/2 opacity-100"
+              style={{ verticalAlign: 'middle'}}
+            /> */}
+
+
+           <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true }}
+              className="text-xl mb-6 sm:text-4xl md:text-6xl lg:text-4xl font-normal leading-tight text-[#2D3253]"
+            >
+              Boost your focus, streamline your learning, and turn curiosity into momentum.
+            </motion.h1>
+
+            {/* <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            >
+              <img
+                src="/Images/browser window.png"
+                alt="Career Icon"
+                width={1000}
+                height={1000}
+                className="inline-block mt-2 mx-2 align-middle border-gray-200 border-opacity-60 rounded-xl"
+                style={{ verticalAlign: 'middle' }}
+              />
+            </motion.div> */}
+
+            <br />
+
+            
+            <div className="relative flex justify-center items-center w-full h-auto">
+              {/* Image Base Layer */}
+              <motion.img
+                src="/Images/browser window.png"
+                alt="Career Icon"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: 'easeOut' }}
+                viewport={{ once: true }}
+                style={{
+                  width: '1000px',
+                  height: 'auto',
+                  borderRadius: '10px',
+                }}
+              />
+
+              {/* Video Overlay with Same Animation */}
+              <motion.video
+                src="/Images/Video.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: 'easeOut' }}
+                viewport={{ once: true }}
+                className="absolute"
+                style={{
+                  width: '820px',
+                  height: 'auto',
+                  borderRadius: '10px',
+                  objectFit: 'cover',
+                  backgroundColor: 'rgba(0, 0, 0, 0)',
+                  objectPosition: '50% 50%',
+                  cursor: 'auto',
+                }}
+              />
+            </div>
+
 
             {/* Process Flow */}
             <div className="mt-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
@@ -175,9 +281,11 @@ const Index = () => {
       <section className="py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-3 text-muted-foreground/80">
-            <Badge variant="secondary" className="bg-card/60 border-primary/10">Trusted by early‑career and experienced professionals</Badge>
+            <Badge variant="secondary" className="bg-card/60 border-primary/10">
+              Trusted by early-career and experienced professionals
+            </Badge>
             <Badge variant="outline">Tech • Product • Data • Cloud</Badge>
-            <Badge variant="outline">Interview‑ready in weeks</Badge>
+            <Badge variant="outline">Interview-ready in weeks</Badge>
           </div>
         </div>
       </section>
@@ -248,7 +356,7 @@ const Index = () => {
               </div>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> Data encryption at rest and in transit</li>
-                <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> Role‑based access and secure storage</li>
+                <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> Role-based access and secure storage</li>
                 <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> You control what to share with employers</li>
               </ul>
             </Card>
@@ -259,7 +367,7 @@ const Index = () => {
               </div>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> Actionable feedback after every step</li>
-                <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> Skill‑gap insights with next‑step guidance</li>
+                <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> Skill-gap insights with next-step guidance</li>
                 <li className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-primary mt-0.5" /> Connect with relevant job openings</li>
               </ul>
             </Card>
@@ -301,28 +409,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-2xl md:text-4xl font-bold text-center mb-8">Questions, answered</h3>
-          <Card className="p-4 md:p-6 bg-gradient-card border-primary/10">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((item, idx) => (
-                <AccordionItem key={idx} value={`item-${idx}`}>
-                  <AccordionTrigger>{item.q}</AccordionTrigger>
-                  <AccordionContent>{item.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </Card>
-        </div>
-      </section>
+      
 
       {/* Newsletter / Job alerts */}
       <section className="py-16">
         <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl md:text-4xl font-bold mb-3">Get updates that matter</h3>
-          <p className="text-muted-foreground mb-6">Occasional tips, mock interview invites, and relevant roles. No spam.</p>
+          <h3 className="text-2xl md:text-4xl font-bold mb-3">Get updates about upcoming events</h3>
+          <p className="text-muted-foreground mb-6">Occasional meetups, mock interview invites, and relevant competitions. No spam.</p>
           <div className="flex gap-2">
             <Input type="email" placeholder="you@example.com" className="bg-card/60 border-primary/20" />
             <Button className="whitespace-nowrap"><Mail className="h-4 w-4 mr-2" /> Notify me</Button>
@@ -331,34 +424,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-primary relative overflow-hidden animate-fade-in">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <Trophy className="h-16 w-16 text-white mx-auto mb-6 animate-pulse" />
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 animate-scale-in">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fade-in">
-            Take the first step towards your professional goals with our comprehensive assessment platform
-          </p>
-          <Link to="/difficulty">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 border-white hover-scale animate-fade-in"
-            >
-              <Zap className="mr-2 h-5 w-5" />
-              Begin Assessment
-            </Button>
-          </Link>
-        </div>
-      </section>
-
       {/* Footer */}
       <Footer />
     </div>
-  );
-};
 
+    <div className="px-4 sm:px-6 lg:px-8 text-center">
+      <h1
+        className="outlined-text text-[3.5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] leading-none tracking-widest"
+      >
+        STTARKEL
+      </h1>
+    </div>
+  </div>
+);
+};
 export default Index;
